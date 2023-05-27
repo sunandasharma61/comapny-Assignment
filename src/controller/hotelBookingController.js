@@ -57,7 +57,7 @@ const createHotelBooking = async function (req, res) {
     if (maritalStatus != "Single" && maritalStatus != "Married") {
       return res.status(400).send({
         status: false,
-        msg: "Marital Status can only be Singel or Marrried",
+        msg: "Marital Status can only be Single or Marrried",
       });
     }
 
@@ -109,7 +109,9 @@ const getHotelBookings = async function (req, res) {
         .status(404)
         .send({ status: false, msg: "Hotel is not available" });
     } else {
-      return res.status(200).send({ status: true,count:saveData.length, data: saveData });
+      return res
+        .status(200)
+        .send({ status: true, count: saveData.length, data: saveData });
     }
   } catch (error) {
     return res.status(500).send({ status: false, message: "error message" });
